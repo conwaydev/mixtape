@@ -1,23 +1,22 @@
 'use strict';
 
 import React from 'react';
+// import PlaylistItemComponent from 'components/PlaylistItemComponent';
 
 require('styles//Playlist.scss');
 
-class PlaylistComponent extends React.Component {
+
+export class PlaylistComponent extends React.Component {
   render() {
     return (
-      <div className="playlist-component">
-        Please edit src/components///PlaylistComponent.js to update this component!
-      </div>
+        <div>
+          <h2>Playlist</h2>
+
+          <p>{this.props.playlist}</p>
+
+        </div>
     );
   }
 }
-
-PlaylistComponent.displayName = 'PlaylistComponent';
-
-// Uncomment properties you need
-// PlaylistComponent.propTypes = {};
-// PlaylistComponent.defaultProps = {};
 
 export default PlaylistComponent;
