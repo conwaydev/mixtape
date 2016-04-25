@@ -1,13 +1,22 @@
 require('normalize.css/normalize.css');
-require('styles/app.css');
+require('bootstrap/scss/bootstrap.scss');
 
 import React from 'react';
 import $ from 'jquery';
+import PlaylistComponent from 'components/PlaylistComponent';
+
+const logoStyles = {
+    display: 'block',
+    width: '240px',
+    height: 'auto'
+};
 
 class AppComponent extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { playlistArray: [] };
+        this.state = {
+            playlistArray: []
+        };
     }
 
     componentDidMount() {
@@ -25,18 +34,28 @@ class AppComponent extends React.Component {
 
     render() {
         return (
-            <ul className="PlaylistList">{this.state.playlistArray.map(function(playlistItem, index) {
-                return (
-                    <li key={playlistItem.id}>
-                        <p><img src={playlistItem.photo.images.small_url} /></p>
-                        <h2>{playlistItem.title}</h2>
+            <div>
+                <nav className="navbar navbar-full navbar-dark bg-inverse">
+                    <a class="navbar-brand" href="#">
+                        <img style={logoStyles} src="images/logo.svg" />
+                    </a>
+                </nav>
 
-                        <ol>{playlistItem.audio.map(function(audioTrack) {
-                            return <li key={audioTrack.id}><a href={audioTrack.stream_url}>{audioTrack.title}</a></li>;
-                        })}</ol>
-                    </li>
-                );
-            })}</ul>
+                <div className="container-fluid m-t-2">
+                    <div className="row">
+                        {this.state.playlistArray.map(function(playlistItem) {
+                            return (
+                                <PlaylistComponent
+                                    key={playlistItem.id}
+                                    author={playlistItem.created_by}
+                                    title={playlistItem.title}
+                                    image={playlistItem.photo.images.medium_url}
+                                    tracks={playlistItem.audio} />
+                            );
+                        })}
+                    </div>
+                </div>
+            </div>
         );
     }
 }
