@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-import AudioTrackComponent from 'components/AudioTrackComponent';
 
 export class PlaylistComponent extends React.Component {
 
@@ -21,15 +20,6 @@ export class PlaylistComponent extends React.Component {
 
                         <p>By {this.props.author}</p>
                     </div>
-
-                    <ul className="list-group list-group-flush">{this.props.tracks.map(function(audioTrack) {
-                        return (
-                            <AudioTrackComponent
-                                key={audioTrack.id}
-                                title={audioTrack.title}
-                                streamUrl={audioTrack.stream_url} />
-                        );
-                    })}</ul>
                 </div>
             </div>
         );
