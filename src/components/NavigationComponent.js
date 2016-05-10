@@ -4,7 +4,7 @@ import React from 'react';
 
 const logoStyles = {
   display: 'block',
-  width: '240px',
+  width: '160px',
   height: 'auto'
 };
 

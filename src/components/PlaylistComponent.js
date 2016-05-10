@@ -3,17 +3,15 @@
 import React from 'react';
 
 export class PlaylistComponent extends React.Component {
-
-
     render() {
         return (
-            <div className="col-md-4 col-sm-6 m-t-1">
-                <div className="card">
+            <div className="col-md-4 col-sm-6">
+                <div className="card m-t-1">
                     <img className="card-img-top img-fluid" src={this.props.image} />
 
                     <div className="card-block">
                         <h2>
-                            <a href="/">
+                            <a>
                                 {this.props.title}
                             </a>
                         </h2>
