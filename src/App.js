@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+import { HashRouter as Router, Link, Route } from 'react-router-dom';
 
 import Playlist from './components/playlist';
 import PlaylistList from './components/playlist-list';
@@ -58,7 +58,7 @@ class App extends Component {
                         </div>
 
                         <div className="col-md-7 flex-first">
-                            <Route exact={true} path={'/mixtape.website/'} render={()=> (
+                            <Route exact={true} path={'/'} render={()=> (
                                 <div>
                                     <h4 style={{marginTop: '20px'}}>Welcome to mixtape.website</h4>
                                     <p>mixtape.website is a web project that seeks to bring community to the digital mixtape world. Powered by <a href="//stagebloc.com">Fullscreen Direct</a>, mixtape.website aims to allow for content creators as well as listeners to create entralling web experiences.</p>
@@ -67,7 +67,7 @@ class App extends Component {
                                 </div>
                             )} />
 
-                            <Route path='/mixtape.website/mix/:mix'
+                            <Route path='/mix/:mix'
                                    render={({match}) => (
                                        <Playlist
                                            playlist={this.state.playlists.find((playlist) => playlist.id === parseInt(match.params.mix))}
@@ -107,7 +107,7 @@ class App extends Component {
         return (
             <Router>
                 <div className="App">
-                    <Link to="/mixtape.website/" className="Logo">
+                    <Link to="/" className="Logo">
                         <img src={logo} alt="mixtape.website" height="20" />
                     </Link>
 
