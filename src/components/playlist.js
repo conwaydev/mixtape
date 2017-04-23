@@ -8,8 +8,8 @@ class Playlist extends Component {
     render() {
         return (
             <div className="Playlist__information">
-                <div className="row" style={{ paddingTop: '15px', paddingBottom: '15px' }}>
-                    <div className="col-xs-12 col-sm-6 col-lg-5">
+                <div className="row">
+                    <div className="col-12 col-sm-6 col-lg-5">
                         <div className="Playlist__cover">
                             <img src={this.props.playlist.photo.images.medium_url}
                                  alt={this.props.playlist.title}

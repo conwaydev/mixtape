@@ -5,7 +5,10 @@ class PlaylistButton extends Component {
 	render() {
 		return (
 			<div className="col-6 col-md-4">
-				<Link className="Playlist__cover" to={`/mix/${this.props.id}`}>
+				<Link className="Playlist__cover"
+					  to={`/mix/${this.props.id}`}
+					  onClick={()=> window.scrollTo(0, 0)}
+				>
 					<img src={this.props.image}
 						 alt={this.props.name}
 						 className="img-fluid"

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import AudioPlayer from './react-responsive-audio-player/src';
+import AudioPlayer from './react-responsive-audio-player';
 
 class Player extends Component {
     render() {
         return (
-            <div className="Playlist__player" ref={player => player && player.focus()}>
+            <div className="Playlist__player">
                 <AudioPlayer
                     playlist={this.props.playlist}
                     autoplay={true}

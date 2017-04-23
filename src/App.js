@@ -2,6 +2,7 @@ import $ from 'jquery';
 import React, { Component } from 'react';
 import { HashRouter as Router, Link, Route } from 'react-router-dom';
 
+import Home from './components/home';
 import Playlist from './components/playlist';
 import PlaylistList from './components/playlist-list';
 import Player from './components/player';
@@ -51,21 +52,14 @@ class App extends Component {
     renderApplication() {
         if (this.state.isLoaded) {
             return (
-				<div className="container-fluid">
-					<div className="row">
+                <div className="container-fluid">
+                    <div className="row">
                         <div className="col-md-5">
                             <PlaylistList playlists={this.state.playlists} />
                         </div>
 
                         <div className="col-md-7 flex-first">
-                            <Route exact={true} path={'/'} render={()=> (
-                                <div>
-                                    <h4 style={{marginTop: '20px'}}>Welcome to mixtape.website</h4>
-                                    <p>mixtape.website is a web project that seeks to bring community to the digital mixtape world. Powered by <a href="//stagebloc.com">Fullscreen Direct</a>, mixtape.website aims to allow for content creators as well as listeners to create entralling web experiences.</p>
-
-                                    <p>To get started please select a playlist...</p>
-                                </div>
-                            )} />
+                            <Route exact={true} path={'/'} component={Home} />
 
                             <Route path='/mix/:mix'
                                    render={({match}) => (
@@ -76,29 +70,29 @@ class App extends Component {
                                    )}
                             />
                         </div>
-					</div>
+                    </div>
 
                     {this.state.isPlaying &&
-						<Player
+                        <Player
                             playlist={this.state.playingPlaylist.audio.map(audio => {
                                 return {
                                     url: audio.stream_url,
                                     displayText: audio.title
                                 }
                             })}
-						/>
+                        />
                     }
-				</div>
+                </div>
             )
         } else {
             return (
-				<div className="container-fluid">
-					<div className="row">
-						<div className="col-12">
-							<p>oh I am loading.........</p>
-						</div>
-					</div>
-				</div>
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-12">
+                            <p>oh I am loading.........</p>
+                        </div>
+                    </div>
+                </div>
             )
         }
     }
