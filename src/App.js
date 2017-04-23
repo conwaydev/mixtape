@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import classNames from 'classnames';
 import React, { Component } from 'react';
 import { HashRouter as Router, Link, Route } from 'react-router-dom';
 
@@ -100,7 +101,9 @@ class App extends Component {
     render() {
         return (
             <Router>
-                <div className="App">
+                <div className={classNames('App', {
+                    'has-player': this.state.isPlaying
+                })}>
                     <Link to="/" className="Logo">
                         <img src={logo} alt="mixtape.website" height="20" />
                     </Link>

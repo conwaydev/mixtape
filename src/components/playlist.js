@@ -33,6 +33,7 @@ class Playlist extends Component {
                             </p>
 
                             <button className="button button--block button--blue"
+                                    aria-label={`Play the audio for ${this.props.playlist.title}`}
                                     ref={button => button && button.focus()}
                                     onClick={()=> this.props.handlePlayClick(this.props.playlist.id)}
                             >

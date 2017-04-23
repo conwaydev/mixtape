@@ -91,6 +91,7 @@ class AudioPlayer extends React.Component {
         // html audio element used for playback
         this.audio = null;
         this.audioProgressContainer = null;
+
         /* bounding rectangle used for calculating seek
          * position from mouse/touch coordinates
          */
@@ -106,7 +107,7 @@ class AudioPlayer extends React.Component {
             clearTimeout(this.gapLengthTimeout);
             this.gapLengthTimeout = setTimeout(() => this.skipToNextTrack(), gapLengthInSeconds * 1000);
         };
-        this.audioStallListener = () => this.togglePause(true);
+        this.audioStallListener = () => this.togglePause(false);
         this.audioTimeUpdateListener = () => this.handleTimeUpdate();
         this.audioMetadataLoadedListener = () => this.setState({
             activeTrackIndex: this.currentTrackIndex
@@ -247,10 +248,12 @@ class AudioPlayer extends React.Component {
             this.audio.play();
         } catch (error) {
             logError(error);
+
             const warningMessage =
                 'Audio playback failed at ' +
                 new Date().toLocaleTimeString() +
                 '! (Perhaps autoplay is disabled in this browser.)';
+
             logWarning(warningMessage);
         }
     }
@@ -259,23 +262,27 @@ class AudioPlayer extends React.Component {
         if (!this.audio) {
             return;
         }
-        this.audio.pause();
+
         if (!this.props.playlist || !this.props.playlist.length) {
             return;
         }
+
+        this.audio.pause();
+
         let i = this.currentTrackIndex + 1;
+
         if (i >= this.props.playlist.length) {
             i = 0;
         }
+
         this.currentTrackIndex = i;
+
         this.setState({
             activeTrackIndex: -1,
             displayedTime: 0
         }, () => {
             this.updateSource();
-            const shouldPauseOnCycle = (!this.props.cycle && i === 0);
-            const shouldPause = shouldPauseOnCycle || (typeof shouldPlay === 'boolean' ? !shouldPlay : false);
-            this.togglePause(shouldPause);
+            this.togglePause(false);
         });
     }
 
@@ -296,6 +303,7 @@ class AudioPlayer extends React.Component {
             i = this.props.playlist.length - 1;
         }
         this.currentTrackIndex = i - 1;
+
         this.skipToNextTrack();
     }
 
@@ -386,9 +394,7 @@ class AudioPlayer extends React.Component {
 
                 <div className="audio_controls">
                     <button
-                        className={classNames('button', 'button--small',  'skip_button back audio_button', {
-                            'hidden': this.props.hideBackSkip
-                        })}
+                        className='button button--small'
                         onClick={() => this.backSkip()}
                         autoFocus
                     >
@@ -396,20 +402,15 @@ class AudioPlayer extends React.Component {
                     </button>
 
                     <button
-                        id="play_pause_button"
-                        className={classNames('button', 'button--small', 'play_pause_button', 'audio_button', {
-                            'paused': this.state.paused
-                        })}
+                        className='button button--small'
                         onClick={() => this.togglePause()}
+                        style={{marginLeft: '10px', marginRight: '10px'}}
                     >
                         {this.state.paused ? 'Play' : 'Pause'}
                     </button>
 
                     <button
-                        id="skip_button"
-                        className={classNames('button', 'button--small', 'skip_button audio_button', {
-                            'hidden': this.props.hideForwardSkip
-                        })}
+                        className='button button--small'
                         onClick={() => this.skipToNextTrack()}
                     >
                         Next
