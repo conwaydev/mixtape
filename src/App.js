@@ -58,7 +58,7 @@ class App extends Component {
                         </div>
 
                         <div className="col-md-7 flex-first">
-                            <Route exact={true} path={'/'} render={()=> (
+                            <Route exact={true} path={'/mixtape.website/'} render={()=> (
                                 <div>
                                     <h4 style={{marginTop: '20px'}}>Welcome to mixtape.website</h4>
                                     <p>mixtape.website is a web project that seeks to bring community to the digital mixtape world. Powered by <a href="//stagebloc.com">Fullscreen Direct</a>, mixtape.website aims to allow for content creators as well as listeners to create entralling web experiences.</p>
@@ -67,7 +67,7 @@ class App extends Component {
                                 </div>
                             )} />
 
-                            <Route path='/mix/:mix'
+                            <Route path='/mixtape.website/mix/:mix'
                                    render={({match}) => (
                                        <Playlist
                                            playlist={this.state.playlists.find((playlist) => playlist.id === parseInt(match.params.mix))}
@@ -80,7 +80,7 @@ class App extends Component {
 
                     {this.state.isPlaying &&
 						<Player
-                            playlist={this.state.playingPlaylist.audio.map((audio, i) => {
+                            playlist={this.state.playingPlaylist.audio.map(audio => {
                                 return {
                                     url: audio.stream_url,
                                     displayText: audio.title
@@ -107,7 +107,7 @@ class App extends Component {
         return (
             <Router>
                 <div className="App">
-                    <Link to="/" className="Logo">
+                    <Link to="/mixtape.website/" className="Logo">
                         <img src={logo} alt="mixtape.website" height="20" />
                     </Link>
 
