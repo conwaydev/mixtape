@@ -44,9 +44,14 @@ class App extends Component {
             isPlaying: false
         });
 
-        this.setState({
-            playingPlaylist: this.state.playlists.find((playlist)=> playlist.id === playlistID),
-            isPlaying: true
+        $.ajax({
+            url: `https://api.fullscreendirect.com/v1/account/5111/audio/playlists/${playlistID}?expand=audio&client_id=a1f64c449fcccb805232efbe07b4779f&jsonp=?`,
+            dataType: 'JSONP'
+        }).then(response => {
+            this.setState({
+                playingPlaylist: response.data,
+                isPlaying: true
+            });
         });
     }
 
