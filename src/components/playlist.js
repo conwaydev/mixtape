@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import LazyLoad from 'react-lazyload';
 
 class Playlist extends Component {
     printDescription(description) {
@@ -11,11 +12,13 @@ class Playlist extends Component {
                 <div className="row">
                     <div className="col-12 col-sm-6 col-lg-5">
                         <div className="Playlist__cover">
-                            <img src={this.props.playlist.photo.images.medium_url}
-                                 alt={this.props.playlist.title}
-                                 className="img-fluid"
-                                 style={{ width: '100%' }}
-                            />
+                            <LazyLoad height={350}>
+                                <img src={this.props.playlist.photo.images.medium_url}
+                                     alt={this.props.playlist.title}
+                                     className="img-fluid"
+                                     style={{ width: '100%' }}
+                                />
+                            </LazyLoad>
                         </div>
 
                         <div className="Playlist__actions">

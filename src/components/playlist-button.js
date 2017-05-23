@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import LazyLoad from 'react-lazyload';
 
 class PlaylistButton extends Component {
 	render() {
@@ -9,10 +10,12 @@ class PlaylistButton extends Component {
 					  to={`/mix/${this.props.id}`}
 					  onClick={()=> window.scrollTo(0, 0)}
 				>
-					<img src={this.props.image}
-						 alt={this.props.name}
-						 className="img-fluid"
-					/>
+					<LazyLoad height={200}>
+						<img src={this.props.image}
+							 alt={this.props.name}
+							 className="img-fluid"
+						/>
+					</LazyLoad>
 				</Link>
 			</div>
 		);
