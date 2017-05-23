@@ -8,7 +8,6 @@ import Playlist from './components/playlist';
 import PlaylistList from './components/playlist-list';
 import Player from './components/player';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 import logo from './logo.svg';
@@ -60,11 +59,7 @@ class App extends Component {
             return (
                 <div className="container-fluid">
                     <div className="row">
-                        <div className="col-md-5">
-                            <PlaylistList playlists={this.state.playlists} />
-                        </div>
-
-                        <div className="col-md-7 flex-first">
+                        <div className="col-md-7">
                             <Route exact={true} path={'/'} component={Home} />
 
                             <Route path='/mix/:mix'
@@ -75,6 +70,10 @@ class App extends Component {
                                        />
                                    )}
                             />
+                        </div>
+
+                        <div className="col-md-5">
+                            <PlaylistList playlists={this.state.playlists} />
                         </div>
                     </div>
 
