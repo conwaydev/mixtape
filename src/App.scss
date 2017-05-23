@@ -1,5 +1,9 @@
 @import "../node_modules/bootstrap/scss/bootstrap-grid";
 
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/_type";
+
 body {
   font-family: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
   font-size: 16px;
