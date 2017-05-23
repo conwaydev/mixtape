@@ -11,7 +11,7 @@ class PlaylistList extends Component {
                             <PlaylistButton
                                 key={i}
                                 id={playlist.id}
-                                image={playlist.photo.images.medium_url}
+                                image={playlist.photo.images.small_url}
                                 name={playlist.title}
                             />
                         )

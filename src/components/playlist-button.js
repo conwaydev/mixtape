@@ -9,6 +9,7 @@ class PlaylistButton extends Component {
 				<Link className="Playlist__cover"
 					  to={`/mix/${this.props.id}`}
 					  onClick={()=> window.scrollTo(0, 0)}
+					  title={this.props.name}
 				>
 					<LazyLoad height={200}>
 						<img src={this.props.image}

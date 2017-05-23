@@ -8,7 +8,7 @@ import Playlist from './components/playlist';
 import PlaylistList from './components/playlist-list';
 import Player from './components/player';
 
-import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 import logo from './logo.svg';
